@@ -1,11 +1,53 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8"/>
-    <title><%= htmlWebpackPlugin.options.title %></title>
-    <link rel="stylesheet" href="assets/styles.css">
-  </head>
-  <body>
-    <p>Yeah!</p>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="navItem">Etusivu</li>
+            <li class="navItem">Ruokalistat</li>
+            <li class="navItem">Ravintolat</li>
+            <li class="navItem">Yhteystiedot</li>
+        </ul>
+        <span class="search">
+            <input type="text" placeholder="Search...">
+        </span>
+    </nav>
+    <header>
+        <div id="headerBlock"></div>
+        <div id="headerImg" style="background-image: url('assets/img/header_image.jpg');"></div>
+    </header>
+    <main>
+        <article>
+            <p>
+                Missä tänään syötäisiin? Tuttu tarina ennen lounashetkeä. Palvelu etsii lähelläsi olevat lounaspaikat, sekä näyttää niiden
+                päivittäisen lounaslistan. Viikottaiset lounaslistat ovat myös käytettävissäsi. Pääset niihin klikkaamalla ravintolan logoa.
+            </p>
+        </article>
+        <section>
+            <div class="card">
+                <div class="cardImg">
+
+                </div>
+                <div class="cardContent">
+                    <h3>Ravintola 1</h3>
+                </div>
+            </div>
+            <div class="card">
+                <div class="cardImg">
+
+                </div>
+                <div class="cardContent">
+                    <h3>Ravintola 1</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
 </html>
