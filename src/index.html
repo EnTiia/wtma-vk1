@@ -10,33 +10,39 @@
 <body>
     <nav>
         <ul>
-            <li class="navItem">Etusivu</li>
-            <li class="navItem">Ruokalistat</li>
-            <li class="navItem">Ravintolat</li>
-            <li class="navItem">Yhteystiedot</li>
+          <li><a href="#" class="navItem">Etusivu</a></li>
+          <li><a href="#" class="navItem">Ruokalistat</a></li>
+          <li><a href="#" class="navItem">Ravintolat</a></li>
+          <li><a href="#" class="navItem">Yhteystiedot</a></li>
         </ul>
         <span class="search">
             <input type="text" placeholder="Search...">
         </span>
     </nav>
     <header>
-        <div id="headerBlock"></div>
-        <div id="headerImg" style="background-image: url('assets/img/header_image.jpg');"></div>
+        <div id="headerBlock">
+          <div class="headerContent">
+            <h1 class="headerText">Lounari.</h1>
+            <h4 class="headerText">Missä tänään syötäisiin.</h4>
+        </div>
+        </div>
+        <div id="headerImg" class="polygon" style="background-image: url('assets/img/header_image.jpg');"></div>
     </header>
     <main>
         <article>
             <p>
-                Missä tänään syötäisiin? Tuttu tarina ennen lounashetkeä. Palvelu etsii lähelläsi olevat lounaspaikat, sekä näyttää niiden
-                päivittäisen lounaslistan. Viikottaiset lounaslistat ovat myös käytettävissäsi. Pääset niihin klikkaamalla ravintolan logoa.
+              Missä tänään syötäisiin? Tuttu tarina ennen lounashetkeä.
+              <br>Palvelu etsii lähelläsi olevat lounaspaikat, sekä näyttää niiden päivittäisen lounaslistan.
+              <br>Viikottaiset lounaslistat ovat myös käytettävissäsi. Pääset niihin klikkaamalla ravintolan logoa.
             </p>
         </article>
-        <section>
+        <section class="cards">
             <div class="card">
                 <div class="cardImg">
 
                 </div>
                 <div class="cardContent">
-                    <h3>Ravintola 1</h3>
+                    <h4>Ravintola 1</h4>
                 </div>
             </div>
             <div class="card">
@@ -44,9 +50,25 @@
 
                 </div>
                 <div class="cardContent">
-                    <h3>Ravintola 1</h3>
+                    <h4>Ravintola 1</h4>
                 </div>
             </div>
+            <div class="card">
+              <div class="cardImg">
+
+              </div>
+              <div class="cardContent">
+                  <h4>Ravintola 1</h4>
+              </div>
+          </div>
+          <div class="card">
+            <div class="cardImg">
+
+            </div>
+            <div class="cardContent">
+                <h4>Ravintola 1</h4>
+            </div>
+        </div>
         </section>
     </main>
 </body>
