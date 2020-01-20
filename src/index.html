@@ -6,70 +6,76 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="assets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Slab&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <ul>
-          <li><a href="#" class="navItem">Etusivu</a></li>
-          <li><a href="#" class="navItem">Ruokalistat</a></li>
-          <li><a href="#" class="navItem">Ravintolat</a></li>
-          <li><a href="#" class="navItem">Yhteystiedot</a></li>
+          <li><a href="#" class="nav-item">Etusivu</a></li>
+          <li><a href="#" class="nav-item">Ruokalistat</a></li>
+          <li><a href="#" class="nav-item">Ravintolat</a></li>
+          <li><a href="#" class="nav-item">Yhteystiedot</a></li>
         </ul>
         <span class="search">
             <input type="text" placeholder="Search...">
         </span>
     </nav>
     <header>
-        <div id="headerBlock">
-          <div class="headerContent">
-            <h1 class="headerText">Lounari.</h1>
-            <h4 class="headerText">Missä tänään syötäisiin.</h4>
+        <div id="header-block">
+          <div class="header-content">
+            <div id="logo-text">Lounari.</div>
+            <div id="slogan">Missä tänään syötäisiin.</div>
         </div>
         </div>
-        <div id="headerImg" class="polygon" style="background-image: url('assets/img/header_image.jpg');"></div>
+        <div id="header-img" class="polygon" style="background-image: url('assets/img/header_image.jpg');"></div>
     </header>
     <main>
         <article>
-            <p>
+            <div class="text">
               Missä tänään syötäisiin? Tuttu tarina ennen lounashetkeä.
               <br>Palvelu etsii lähelläsi olevat lounaspaikat, sekä näyttää niiden päivittäisen lounaslistan.
               <br>Viikottaiset lounaslistat ovat myös käytettävissäsi. Pääset niihin klikkaamalla ravintolan logoa.
-            </p>
+            </div>
         </article>
         <section class="cards">
             <div class="card">
-                <div class="cardImg">
+                <div class="card-img">
 
                 </div>
-                <div class="cardContent">
-                    <h4>Ravintola 1</h4>
+                <div class="card-content">
+                    <div class="restaurant">Ravintola 1</div>
+                    <div class="location">Metropolia Myyrmäki</div>
+                    <div class="menu">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus magna nisi, eget consequat arcu imperdiet non. Aliquam dolor nisl, porta in maximus id, vulputate ac diam. Donec lobortis elit eget mi dictum pharetra. Mauris mi lectus, viverra et consectetur id, feugiat et tellus. Donec eget vehicula leo. Nullam interdum mauris viverra mi rhoncus vestibulum.</div>
                 </div>
             </div>
             <div class="card">
-                <div class="cardImg">
+                <div class="card-img">
 
                 </div>
-                <div class="cardContent">
-                    <h4>Ravintola 1</h4>
+                <div class="card-content">
+                    <div class="restaurant">Ravintola 1</div>
                 </div>
             </div>
             <div class="card">
-              <div class="cardImg">
+              <div class="card-img">
 
               </div>
-              <div class="cardContent">
-                  <h4>Ravintola 1</h4>
+              <div class="card-content">
+                  <div class="restaurant">Ravintola 1</div>
               </div>
           </div>
           <div class="card">
-            <div class="cardImg">
+            <div class="card-img">
 
             </div>
-            <div class="cardContent">
-                <h4>Ravintola 1</h4>
+            <div class="card-content">
+                <div class="restaurant">Ravintola 1</div>
             </div>
         </div>
         </section>
+        <img src="assets/img/search.svg">
+        <img src="assets/img/add.svg">
+        <img src="assets/img/location.svg">
     </main>
 </body>
 </html>
