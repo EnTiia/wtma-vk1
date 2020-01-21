@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const lowest = 1;
 const highest = 100;
 
@@ -79,3 +80,5 @@ const resetGame = () => {
 
   randomNumber = Math.floor(Math.random() * 100) + 1;
 };
+=======
+>>>>>>> 23e2017fc80ffefab2eaef5f5e1d0bb3179e70a5
