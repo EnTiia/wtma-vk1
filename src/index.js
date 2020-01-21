@@ -1,84 +1,115 @@
-<<<<<<< HEAD
-const lowest = 1;
-const highest = 100;
+window.addEventListener('DOMContentLoaded', (event) => {
+  let language = 'fi';
+  let sortDirection = 'asc';
 
-let start = Date.now();
+  const cardContent = document.querySelector('div.card-content');
+  const main = document.querySelector('main');
 
-const randomNumber = Math.floor(Math.random() * highest) + lowest;
-const seconds = () => ((Date.now() - start) / 1000).toFixed(2);
+  const randomCourse = document.createElement('p');
 
-const guesses = document.querySelector('.guesses');
-const lastResult = document.querySelector('.lastResult');
-const lowOrHi = document.querySelector('.lowOrHi');
+  const coursesEn = ["Hamburger, cream sauce and poiled potates",
+    "Goan style fish curry and whole grain rice",
+    "Vegan Chili sin carne and whole grain rice",
+    "Broccoli puree soup, side salad with two napas",
+    "Lunch baguette with BBQ-turkey filling",
+    "Cheese / Chicken / Vege / Halloum burger and french fries"];
 
-const guessSubmit = document.querySelector('.guessSubmit');
-const guessField = document.querySelector('.guessField');
+  const coursesFi = ["Jauhelihapihvi, ruskeaa kermakastiketta ja keitettyä perunaa",
+    "Goalaista kalacurrya ja täysjyväriisiä",
+    "vegaani Chili sin carne ja täysjyväriisi",
+    "Parsakeittoa,lisäkesalaatti kahdella napaksella",
+    "Lunch baguette with BBQ-turkey filling",
+    "Juusto / Kana / Kasvis / Halloumi burgeri ja ranskalaiset"];
 
-let guessCount = 1;
-let resetButton;
-
-const checkGuess = () => {
-  let userGuess = Number(guessField.value);
-  if (guessCount === 1) {
-    guesses.textContent = 'Previous guesses: ';
-  }
-  guesses.textContent += userGuess + ' ';
-
-  if (userGuess === randomNumber) {
-    lastResult.textContent = 'Congratulations! You got it right!';
-    lastResult.style.backgroundColor = 'green';
-    lowOrHi.textContent = '';
-    setGameOver();
-  } else if (guessCount === 10) {
-    lastResult.textContent = '!!!GAME OVER!!!';
-    setGameOver();
-  } else {
-    lastResult.textContent = 'Wrong!';
-    lastResult.style.backgroundColor = 'red';
-    if(userGuess < randomNumber) {
-      lowOrHi.textContent = 'Last guess was too low!';
-    } else if(userGuess > randomNumber) {
-      lowOrHi.textContent = 'Last guess was too high!';
+  const printMenu = (list) => {
+    const menu = document.querySelector('#lunchList');
+    menu.innerHTML = '';
+    for (item of list) {
+      console.log(item);
+      const menuItem = document.createElement('li');
+      menuItem.innerText = item;
+      menu.appendChild(menuItem);
     }
-  }
+  };
 
-  guessCount++;
-  guessField.value = '';
-  guessField.focus();
-};
+  const sortArray = (array, sort) => {
+    const sortAsc = (a, b) => {
+      if (a > b) {
+        return 1;
+      } else if (b > a) {
+        return -1;
+      } else {
+        return 0;
+      }
+    };
 
-guessSubmit.addEventListener('click', checkGuess);
+    const sortDesc = (a, b) => {
+      if (a < b) {
+        return 1;
+      } else if (b < a) {
+        return -1;
+      } else {
+        return 0;
+      }
+    };
 
-const setGameOver = () => {
-  guessField.disabled = true;
-  guessSubmit.disabled = true;
-  timeSpent = document.createElement('p');
-  timeSpent.textContent = 'Total time spent guessing: ' + seconds() + ' and total number of guesses: ' + guessCount;
-  document.body.appendChild(timeSpent);
-  resetButton = document.createElement('button');
-  resetButton.textContent = 'Start new game';
-  document.body.appendChild(resetButton);
-  resetButton.addEventListener('click', resetGame);
-};
+    if (sort === 'desc') {
+      return array.sort(sortDesc);
+    } else {
+      return array.sort(sortAsc);
+    }
+  };
 
-const resetGame = () => {
-  guessCount = 1;
-  start = Date.now();
-  const resetParas = document.querySelectorAll('.resultParas p');
-  for (let i = 0 ; i < resetParas.length ; i++) {
-    resetParas[i].textContent = '';
-  }
+  const sortButton = document.createElement('button');
+  sortButton.innerText = 'Järjestä';
 
-  resetButton.parentNode.removeChild(resetButton);
+  sortButton.addEventListener('click', event => {
+    const array = (language === 'fi') ? coursesFi : coursesEn;
+    const sortedArray = sortArray(array, sortDirection);
+    if (sortDirection === 'asc'){
+      sortDirection = 'desc';
+    } else {
+      sortDirection = 'asc';
+    }
 
-  guessField.disabled = false;
-  guessSubmit.disabled = false;
-  guessField.value = '';
-  guessField.focus();
+    printMenu(sortedArray);
+  });
 
-  lastResult.style.backgroundColor = 'white';
+  const languageButton = document.createElement('button');
+  languageButton.innerText = 'Vaihda kieltä';
 
-  randomNumber = Math.floor(Math.random() * 100) + 1;
-};
-=======
->>>>>>> 23e2017fc80ffefab2eaef5f5e1d0bb3179e70a5
+  const randomButton = document.createElement('button');
+  randomButton.innerText = 'Arvo satunnainen ruokalaji';
+
+  languageButton.addEventListener('click', event => {
+    if (language === 'fi'){
+      language = 'en';
+      languageButton.innerText = 'Change language';
+      sortButton.innerText = 'Sort';
+      randomButton.innerText = 'Select random course';
+      printMenu(coursesEn);
+    } else {
+      language = 'fi';
+      languageButton.innerText = 'Vaihda kieltä';
+      sortButton.innerText = 'Järjestä';
+      randomButton.innerText = 'Arvo satunnainen ruokalaji';
+      printMenu(coursesFi);
+    }
+  });
+
+  randomButton.addEventListener('click', event => {
+    const array = (language === 'fi') ? coursesFi : coursesEn;
+    const random = Math.floor(Math.random()*array.length);
+    console.log(random);
+    randomCourse.innerText = array[random];
+  });
+
+  cardContent.appendChild(sortButton);
+  cardContent.appendChild(languageButton);
+  cardContent.appendChild(randomButton);
+  main.appendChild(randomCourse);
+
+  printMenu((language === 'fi') ? coursesFi : coursesEn);
+});
+
+
