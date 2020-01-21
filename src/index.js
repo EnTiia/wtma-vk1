@@ -1,7 +1,10 @@
 const lowest = 1;
 const highest = 100;
 
+let start = Date.now();
+
 const randomNumber = Math.floor(Math.random() * highest) + lowest;
+const seconds = () => ((Date.now() - start) / 1000).toFixed(2);
 
 const guesses = document.querySelector('.guesses');
 const lastResult = document.querySelector('.lastResult');
@@ -48,6 +51,9 @@ guessSubmit.addEventListener('click', checkGuess);
 const setGameOver = () => {
   guessField.disabled = true;
   guessSubmit.disabled = true;
+  timeSpent = document.createElement('p');
+  timeSpent.textContent = 'Total time spent guessing: ' + seconds() + ' and total number of guesses: ' + guessCount;
+  document.body.appendChild(timeSpent);
   resetButton = document.createElement('button');
   resetButton.textContent = 'Start new game';
   document.body.appendChild(resetButton);
@@ -56,7 +62,7 @@ const setGameOver = () => {
 
 const resetGame = () => {
   guessCount = 1;
-
+  start = Date.now();
   const resetParas = document.querySelectorAll('.resultParas p');
   for (let i = 0 ; i < resetParas.length ; i++) {
     resetParas[i].textContent = '';
