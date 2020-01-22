@@ -19,9 +19,9 @@ nav ul{
   font-size: 17px;
 }
 
-a:link, a:visited {
+a:link, a:visited{
   text-decoration: none;
-  color: black;
+  color: #940E3F;
 }
 
 a:hover{
@@ -42,10 +42,29 @@ nav{
   padding-right: 1rem;
 }
 
+#search-bar{
+  position: relative;
+  padding-left: 1.7rem;
+  height: 1.7rem;
+  border-radius: 0.5rem;
+  border: 1px solid #940E3F;
+}
+
+#search-label{
+  position: absolute;
+  z-index: 1;
+}
+
+#search-icon{
+  height: 1.5rem;
+  padding: 0.3rem;
+  fill: #940E3F;
+}
+
 header{
   height: 15rem;
   display: flex;
-  background-color: rgb(144, 239, 144);
+  background-color: #43E04F;
 }
 
 .header-content{
@@ -111,6 +130,19 @@ article{
   min-height: 8rem;
 }
 
+.location{
+display: flex;
+}
+
+.location-icon{
+  height: 1.3rem;
+  padding-left: 1rem;
+}
+
+.location-icon:hover{
+  fill: #65FF71;
+}
+
 .restaurant{
   font-family: 'Lato', sans-serif;
   font-weight: 800;
@@ -129,7 +161,7 @@ article{
   font-size: 10px;
 }
 
-.location{
+.location-name{
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   font-size: 14px;
