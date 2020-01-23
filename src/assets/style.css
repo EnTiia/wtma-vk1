@@ -83,12 +83,14 @@ header{
   font-family: 'Roboto Slab', serif;
   font-weight: 800;
   font-size: 60px;
+  color: white;
 }
 
 #slogan{
   font-family: 'Roboto Slab', serif;
   font-weight: 400;
   font-size: 23px;
+  color: white;
 }
 
 
@@ -97,6 +99,17 @@ header{
   background-size: cover;
   background-position: 50%;
   flex: 3;
+}
+
+.card-img{
+  width: 8rem;
+  height: 8rem;
+  border: 1px solid black;
+  margin: 1rem 1rem 1rem 0;
+}
+
+.card-logo{
+  height: 100%;
 }
 
 .polygon{
@@ -128,6 +141,37 @@ article{
   box-sizing: border-box;
   width: 47%;
   min-height: 8rem;
+  display: flex;
+}
+
+.new-card{
+  margin-bottom: 5%;
+  padding: 1rem;
+  border: 1px dashed #9BADBF;
+  border-radius: .3rem;
+  background-color: white;
+  box-sizing: border-box;
+  width: 47%;
+  min-height: 8rem;
+  display: flex;
+}
+
+#add-icon{
+  height: 1.5rem;
+  fill: #9BADBF;
+  padding-right: 0.3rem;
+}
+
+#add-icon:hover, #add-icon:active{
+  fill: #65FF71;
+}
+
+#add-restaurant{
+  color: #9BADBF;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  padding: 0.2rem;
 }
 
 .location{
