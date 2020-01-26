@@ -1,6 +1,5 @@
 const lowest = 1;
 const highest = 100;
-const maxGuessCount = 1000;
 
 let start = Date.now();
 
@@ -17,15 +16,8 @@ const guessField = document.querySelector('.guessField');
 let guessCount = 1;
 let resetButton;
 
-const checkGuess = (input) => {
-  console.log('checkguess input', input);
-  let userGuess;
-  if(typeof input === 'object'){
-    userGuess = Number(guessField.value);
-  } else {
-    userGuess = input;
-  };
-
+const checkGuess = () => {
+  let userGuess = Number(guessField.value);
   if (guessCount === 1) {
     guesses.textContent = 'Previous guesses: ';
   }
@@ -36,7 +28,7 @@ const checkGuess = (input) => {
     lastResult.style.backgroundColor = 'green';
     lowOrHi.textContent = '';
     setGameOver();
-  } else if (guessCount === maxGuessCount) {
+  } else if (guessCount === 10) {
     lastResult.textContent = '!!!GAME OVER!!!';
     setGameOver();
   } else {
@@ -53,3 +45,38 @@ const checkGuess = (input) => {
   guessField.value = '';
   guessField.focus();
 };
+
+guessSubmit.addEventListener('click', checkGuess);
+
+const setGameOver = () => {
+  guessField.disabled = true;
+  guessSubmit.disabled = true;
+  timeSpent = document.createElement('p');
+  timeSpent.textContent = 'Total time spent guessing: ' + seconds() + ' and total number of guesses: ' + guessCount;
+  document.body.appendChild(timeSpent);
+  resetButton = document.createElement('button');
+  resetButton.textContent = 'Start new game';
+  document.body.appendChild(resetButton);
+  resetButton.addEventListener('click', resetGame);
+};
+
+const resetGame = () => {
+  guessCount = 1;
+  start = Date.now();
+  const resetParas = document.querySelectorAll('.resultParas p');
+  for (let i = 0 ; i < resetParas.length ; i++) {
+    resetParas[i].textContent = '';
+  }
+
+  resetButton.parentNode.removeChild(resetButton);
+
+  guessField.disabled = false;
+  guessSubmit.disabled = false;
+  guessField.value = '';
+  guessField.focus();
+
+  lastResult.style.backgroundColor = 'white';
+
+  randomNumber = Math.floor(Math.random() * 100) + 1;
+};
+
