@@ -222,3 +222,13 @@ display: flex;
   font-weight: 400;
   font-size: 14px;
 }
+
+
+@media (max-width: 1000px){
+  .card{
+    width: 100%;
+  }
+  .new-card{
+    width: 100%;
+  }
+}
