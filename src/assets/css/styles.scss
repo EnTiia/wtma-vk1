@@ -1,11 +1,20 @@
+$link-color: #940e3f;
+$header-font-family: 'Roboto Slab', serif;
+$text-font-family: 'Lato', sans-serif;
+$main-green: #43E04F;
+$active-green: #65FF71;
+$text-line-height: 125%;
+
 *{
   margin: 0;
   padding: 0;
 }
 
-nav ul{
-  display: flex;
-  list-style-type: none;
+nav {
+  ul {
+    display: flex;
+    list-style-type: none;
+  }
 }
 
 #lunchList{
@@ -13,33 +22,33 @@ nav ul{
 }
 
 .nav-item{
-  padding: 0 0 0 1rem;
-  font-family: 'Lato', sans-serif;
+  padding: 0 1rem 0 0;
+  font-family: $text-font-family;
   font-weight: 700;
   font-size: 17px;
 }
 
-a:link, a:visited{
-  text-decoration: none;
-  color: #940E3F;
-}
-
-a:hover{
-  color: rgb(100, 100, 100);
-}
-
-a:active{
-  color: rgb(73, 73, 73);
+a {
+  &:link, &:visited {
+    text-decoration: none;
+    color: $link-color;
+  }
+  &:hover {
+    color: rgb(100, 100, 100);
+  }
+  &:active{
+    color: rgb(73, 73, 73);
+  }
 }
 
 nav{
   display: flex;
   justify-content: space-between;
-  margin: 1rem 0;
+  margin: 1rem 5%;
 }
 
 .search{
-  padding-right: 1rem;
+  padding-left: 1rem;
 }
 
 #search-bar{
@@ -47,7 +56,7 @@ nav{
   padding-left: 1.7rem;
   height: 1.7rem;
   border-radius: 0.5rem;
-  border: 1px solid #940E3F;
+  border: 1px solid $link-color;
 }
 
 #search-label{
@@ -58,13 +67,13 @@ nav{
 #search-icon{
   height: 1.5rem;
   padding: 0.3rem;
-  fill: #940E3F;
+  fill: $link-color;
 }
 
 header{
   height: 15rem;
   display: flex;
-  background-color: #43E04F;
+  background-color: $main-green;
 }
 
 .header-content{
@@ -80,14 +89,14 @@ header{
 }
 
 #logo-text{
-  font-family: 'Roboto Slab', serif;
+  font-family: $header-font-family;
   font-weight: 800;
   font-size: 60px;
   color: white;
 }
 
 #slogan{
-  font-family: 'Roboto Slab', serif;
+  font-family: $header-font-family;
   font-weight: 400;
   font-size: 23px;
   color: white;
@@ -162,13 +171,15 @@ article{
   padding-right: 0.3rem;
 }
 
-#add-icon:hover, #add-icon:active{
-  fill: #65FF71;
+#add-icon{
+  &:hover, &:active{
+    fill: $active-green;
+  }
 }
 
 #add-restaurant{
   color: #9BADBF;
-  font-family: 'Lato', sans-serif;
+  font-family: $text-font-family;
   font-weight: 400;
   font-size: 10px;
   padding: 0.2rem;
@@ -181,32 +192,33 @@ display: flex;
 .location-icon{
   height: 1.3rem;
   padding-left: 1rem;
-}
 
-.location-icon:hover{
-  fill: #65FF71;
+  &:hover{
+    fill: $active-green;
+  }
 }
 
 .restaurant{
-  font-family: 'Lato', sans-serif;
+  font-family: $text-font-family;
   font-weight: 800;
   font-size: 21px;
 }
 
 .text{
-  font-family: 'Lato', sans-serif;
+  font-family: $text-font-family;
   font-weight: 400;
   font-size: 24px;
+  line-height: $text-line-height;
 }
 
 .menu{
-  font-family: 'Lato', sans-serif;
+  font-family: $text-font-family;
   font-weight: 400;
   font-size: 10px;
 }
 
 .location-name{
-  font-family: 'Lato', sans-serif;
+  font-family: $text-font-family;
   font-weight: 400;
   font-size: 14px;
 }
