@@ -1,55 +1,37 @@
-const lowest = 1;
-const highest = 100;
-const maxGuessCount = 1000;
+import {StartGame, checkGuess, resetGame} from './modules/guess-game';
 
-let start = Date.now();
+StartGame();
 
-const randomNumber = Math.floor(Math.random() * highest) + lowest;
-const seconds = () => ((Date.now() - start) / 1000).toFixed(2);
+// TODO: Develop better algorithm
 
-const guesses = document.querySelector('.guesses');
-const lastResult = document.querySelector('.lastResult');
-const lowOrHi = document.querySelector('.lowOrHi');
-
-const guessSubmit = document.querySelector('.guessSubmit');
-const guessField = document.querySelector('.guessField');
-
-let guessCount = 1;
-let resetButton;
-
-const checkGuess = (input) => {
-  console.log('checkguess input', input);
-  let userGuess;
-  if(typeof input === 'object'){
-    userGuess = Number(guessField.value);
-  } else {
-    userGuess = input;
-  };
-
-  if (guessCount === 1) {
-    guesses.textContent = 'Previous guesses: ';
-  }
-  guesses.textContent += userGuess + ' ';
-
-  if (userGuess === randomNumber) {
-    lastResult.textContent = 'Congratulations! You got it right!';
-    lastResult.style.backgroundColor = 'green';
-    lowOrHi.textContent = '';
-    setGameOver();
-  } else if (guessCount === maxGuessCount) {
-    lastResult.textContent = '!!!GAME OVER!!!';
-    setGameOver();
-  } else {
-    lastResult.textContent = 'Wrong!';
-    lastResult.style.backgroundColor = 'red';
-    if(userGuess < randomNumber) {
-      lowOrHi.textContent = 'Last guess was too low!';
-    } else if(userGuess > randomNumber) {
-      lowOrHi.textContent = 'Last guess was too high!';
+const testGamePlay = () => {
+  let guessCounter = 0;
+  let myGuess = 50;
+  let gameOver = false;
+  while(!gameOver) {
+    let correctGuess = checkGuess(myGuess);
+    guessCounter++;
+    if (correctGuess === 0) {
+      gameOver = true;
+      resetGame();
+    } else if (correctGuess < 0){
+      myGuess++;
+    } else {
+      myGuess--;
     }
   }
-
-  guessCount++;
-  guessField.value = '';
-  guessField.focus();
+  return guessCounter;
 };
+
+//testGamePlay();
+
+let guessCounts = [];
+for(let i=0; i<1000; i++) {
+  guessCounts.push(testGamePlay());
+}
+console.log('guess counts', guessCounts);
+
+let maxGuessCount = Math.max(...guessCounts);
+console.log(maxGuessCount);
+
+// TODO: Display max & average of guess counts
