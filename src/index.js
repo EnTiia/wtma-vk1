@@ -105,4 +105,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
   printMenu((language === 'fi') ? coursesFi : coursesEn);
 });
 
+const modal = document.getElementById('modal');
+const btn = document.getElementsByClassName('card-logo')[0];
+const span = document.getElementsByClassName('close-modal')[0];
 
+btn.onclick = function() {
+  modal.style.display = "block";
+};
+
+span.onclick = function() {
+  modal.style.display = "none";
+};
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};

@@ -1,8 +1,8 @@
-$link-color: #940e3f;
+$link-color: #0A0A0A;
 $header-font-family: 'Roboto Slab', serif;
 $text-font-family: 'Lato', sans-serif;
-$main-green: #43E04F;
-$active-green: #65FF71;
+$primary-color: #bdcfd3;
+$active-color: #8d9ea2;
 $text-line-height: 125%;
 
 *{
@@ -11,6 +11,10 @@ $text-line-height: 125%;
 }
 
 nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
   ul {
     display: flex;
     list-style-type: none;
@@ -41,12 +45,6 @@ a {
   }
 }
 
-nav{
-  display: flex;
-  justify-content: space-between;
-  margin: 1rem 5%;
-}
-
 .search{
   padding-left: 1rem;
 }
@@ -73,7 +71,7 @@ nav{
 header{
   height: 15rem;
   display: flex;
-  background-color: $main-green;
+  background-color: $primary-color;
 }
 
 .header-content{
@@ -92,14 +90,14 @@ header{
   font-family: $header-font-family;
   font-weight: 800;
   font-size: 60px;
-  color: white;
+  color: $link-color;
 }
 
 #slogan{
   font-family: $header-font-family;
   font-weight: 400;
   font-size: 23px;
-  color: white;
+  color: $link-color;
 }
 
 
@@ -173,7 +171,7 @@ article{
 
 #add-icon{
   &:hover, &:active{
-    fill: $active-green;
+    fill: $active-color;
   }
 }
 
@@ -194,7 +192,7 @@ display: flex;
   padding-left: 1rem;
 
   &:hover{
-    fill: $active-green;
+    fill: $active-color;
   }
 }
 
@@ -221,6 +219,48 @@ display: flex;
   font-family: $text-font-family;
   font-weight: 400;
   font-size: 14px;
+}
+
+#modal{
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content{
+  background-color: #fefefe;
+  margin: 15% auto;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close-modal{
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+
+  &:hover, &:focus{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+.modal-header{
+  padding: 1rem;
+  background-color: #5cb85c;
+  color: white;
+}
+
+.modal-body{
+  padding: 2px 16px;
 }
 
 
