@@ -1,71 +1,54 @@
-let allGuesses = 0;
+import fazerList from './assets/fazer.json';
 
-// The guessing game uses the binary search to find the random number.
-const guessingGame = () => {
-  const minLimit = 1, maxLimit = 100;
-  const maxGuess = 20;
-  let guessedNumber = null;
-  let guesses = 0;
-  let randomNumber = Math.floor(Math.random() * maxLimit) + minLimit;
-  console.log('random number: ' + randomNumber);
-  let middle = maxLimit / 2;
-  let min = 1;
-  let max = 100;
-  let guessArray = [];
+const menu = [
+  {name: 'Lingonberry jam', price: 4.00},
+  {name: 'Mushroom and bean casserole', price: 5.50},
+  {name: 'Chili-flavoured wheat', price: 3.00},
+  {name: 'Vegetarian soup', price: 4.80},
+  {name: 'Pureed root vegetable soup with smoked cheese', price: 8.00}
+];
 
-  while (guesses < maxGuess) {
-    // The first guess is set to be the middle value.
-    if (guessedNumber === null) {
-      guessedNumber = middle;
-    }
-    guesses++;
-    allGuesses++;
-    // Saving guessed numbers to an array.
-    guessArray.push(guessedNumber);
+const validator = (str) => {
+  const re = /^[A-ZÖÄÅ]{1}[A-ZÖÄÅa-zöäå0-9\s-/,()]{4,64}/;
 
-    if (guessedNumber === randomNumber) {
-      console.log('Your guess was right: ' + guessedNumber);
-      break;
-    } else {
-      // If the guessed number is too low, min value will be changed to the guessed value.
-      // Middle value is changed by calculating the new middle value between max value and guessed number.
-      // max + 1 (so we can guess the number 100).
-      if (guessedNumber < randomNumber) {
-        console.log('Too low: ' + guessedNumber);
-        min = guessedNumber;
-        middle = guessedNumber + ((max + 1 - guessedNumber) / 2);
-        guessedNumber = Math.floor(middle);
-        continue;
-        // If the guessed number is too high, max value will be changed to the guessed value.
-        // Middle value is changed by calculating the new middle value between guessed number and min value.
-      } else if (guessedNumber > randomNumber) {
-        console.log('Too high: ' + guessedNumber);
-        max = guessedNumber;
-        middle = guessedNumber - ((guessedNumber - min) / 2);
-        guessedNumber = Math.floor(middle);
-        continue;
-      }
-    }
+  if (re.test(str)) {
+    return true;
   }
-  // Displays the guessed numbers.
-  document.querySelector('.guesses').textContent = ('Guessed numbers: ' + guessArray);
-  document.querySelector('.results').textContent = ('Number of guesses: ' + guesses);
-
-  return guesses;
+  return false;
 };
 
-let guessCounts = [];
-for (let i = 0; i < 1000; i++) {
-  guessCounts.push(guessingGame());
-}
-console.log('guess counts', guessCounts);
+for (let i = 0; i < menu.length; i++) {
+  console.log(menu[i].name, validator(menu[i].name));
+};
 
-let maxGuessCount = Math.max(...guessCounts);
-console.log('Max guess count: ' + maxGuessCount);
-console.log('The theoretical maximum guesses with binary search from numbers between 1 and 100 is 7.');
+const sortedMenu = menu.sort((a, b) => {
+  return a.price - b.price;
+});
+console.log(sortedMenu);
 
-let minGuessCount = Math.min(...guessCounts);
-console.log('Min guess count: ' + minGuessCount);
+const filteredMenu = menu.filter(a => a.price < 5);
+console.log(filteredMenu);
 
-let avgGuessCount = guessCounts.reduce((a, b) => a + b, 0) / guessCounts.length;
-console.log('Average guess count: ' + avgGuessCount);
+const raisedPrices = menu.map(a => {
+  let returnObject = {};
+  returnObject.name = a.name;
+  returnObject.price = parseFloat((a.price * 1.15).toFixed(2));
+
+  return returnObject;
+});
+console.log(raisedPrices);
+
+const sum = raisedPrices.reduce((acc, cur) => acc + cur.price, 0);
+console.log(sum);
+
+const fazerMenu = fazerList.LunchMenus;
+let vegan = [];
+fazerMenu.forEach(item => {
+  const setMenus = item.SetMenus;
+  setMenus.forEach(item => {
+    item.Meals.forEach(item => {
+      if (item.Diets.includes('Veg')) vegan.push(item);
+    });
+  });
+});
+console.log(vegan);
