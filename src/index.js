@@ -1,124 +1,91 @@
-import lunchList from './assets/sodexo-day-example.json';
 
-window.addEventListener('DOMContentLoaded', (event) => {
-  let language = 'fi';
-  let sortDirection = 'asc';
+import SodexoData from './assets/modules/sodexo-data';
+import {getParsedMenuFazer} from './assets/modules/fazer-data';
 
-  const cardContent = document.querySelector('div.card-content');
-  const main = document.querySelector('main');
+let lang = 'fi';
 
-  const randomCourse = document.createElement('p');
-
-  const lunches = Object.values(lunchList.courses);
-
-  const coursesFi = lunches.map(a => a.title_fi);
-  const coursesEn = lunches.map(a => a.title_en);
-
-  const printMenu = (list) => {
-    const menu = document.querySelector('#lunchList');
-    menu.innerHTML = '';
-    for (let item of list) {
-      console.log(item);
-      const menuItem = document.createElement('li');
-      menuItem.innerText = item;
-      menu.appendChild(menuItem);
-    }
-  };
-
-  const sortArray = (array, sort) => {
-    const sortAsc = (a, b) => {
-      if (a > b) {
-        return 1;
-      } else if (b > a) {
-        return -1;
-      } else {
-        return 0;
-      }
-    };
-
-    const sortDesc = (a, b) => {
-      if (a < b) {
-        return 1;
-      } else if (b < a) {
-        return -1;
-      } else {
-        return 0;
-      }
-    };
-
-    if (sort === 'desc') {
-      return array.sort(sortDesc);
-    } else {
-      return array.sort(sortAsc);
-    }
-  };
-
-  const sortButton = document.createElement('button');
-  sortButton.innerText = 'Järjestä';
-
-  sortButton.addEventListener('click', event => {
-    const array = (language === 'fi') ? coursesFi : coursesEn;
-    const sortedArray = sortArray(array, sortDirection);
-    if (sortDirection === 'asc'){
-      sortDirection = 'desc';
-    } else {
-      sortDirection = 'asc';
-    }
-
-    printMenu(sortedArray);
-  });
-
-  const languageButton = document.createElement('button');
-  languageButton.innerText = 'Vaihda kieltä';
-
-  const randomButton = document.createElement('button');
-  randomButton.innerText = 'Arvo satunnainen ruokalaji';
-
-  languageButton.addEventListener('click', event => {
-    if (language === 'fi'){
-      language = 'en';
-      languageButton.innerText = 'Change language';
-      sortButton.innerText = 'Sort';
-      randomButton.innerText = 'Select random course';
-      printMenu(coursesEn);
-    } else {
-      language = 'fi';
-      languageButton.innerText = 'Vaihda kieltä';
-      sortButton.innerText = 'Järjestä';
-      randomButton.innerText = 'Arvo satunnainen ruokalaji';
-      printMenu(coursesFi);
-    }
-  });
-
-  randomButton.addEventListener('click', event => {
-    const array = (language === 'fi') ? coursesFi : coursesEn;
-    const random = Math.floor(Math.random()*array.length);
-    console.log(random);
-    randomCourse.innerText = array[random];
-  });
-
-  cardContent.appendChild(sortButton);
-  cardContent.appendChild(languageButton);
-  cardContent.appendChild(randomButton);
-  main.appendChild(randomCourse);
-
-  printMenu((language === 'fi') ? coursesFi : coursesEn);
-});
-
-const modal = document.getElementById('modal');
-const btn = document.getElementsByClassName('card-logo')[0];
-const span = document.getElementsByClassName('close-modal')[0];
-
-btn.onclick = function() {
-  modal.style.display = "block";
+/**
+ * Sorts an array alphapetically
+ *
+ * @param {Array} courses - Menu array
+ * @param {Array} order - 'asc' or 'desc'
+ * @returns {Array} sorted menu
+ */
+const sortCourses = (courses, order = 'asc') => {
+  let sortedMenu = courses.sort();
+  if (order === 'desc') {
+    sortedMenu.reverse();
+  }
+  return sortedMenu;
 };
 
-span.onclick = function() {
-  modal.style.display = "none";
-};
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+/**
+ * Renders html list items from menu data
+ *
+ * @param {string} restaurant - name of the selector/restaurant
+ * @param {Array} menu - menu data
+ */
+const renderMenu = (restaurant, menu) => {
+  const list = document.querySelector('#' + restaurant);
+  list.innerHTML = '';
+  for (const item of menu) {
+    const listItem = document.createElement('li');
+    listItem.textContent = item;
+    list.appendChild(listItem);
   }
 };
+
+/**
+ * Picks a random course item from an array
+ *
+ * @param {Array} courses
+ * @returns {string} course
+ */
+const pickRandomCourse = courses => {
+  const randomIndex = Math.floor(Math.random() * courses.length);
+  return courses[randomIndex];
+};
+
+const sodexoRandomCourse = document.createElement('p');
+const fazerRandomCourse = document.createElement('p');
+const main = document.querySelector('main');
+main.appendChild(sodexoRandomCourse);
+main.appendChild(fazerRandomCourse);
+
+const displayRandomCourse = () => {
+  sodexoRandomCourse.innerText = 'Sodexo: ' + 'fi: ' + pickRandomCourse(SodexoData.coursesFi) + ' en: ' + pickRandomCourse(SodexoData.coursesEn);
+  fazerRandomCourse.innerText = 'Fazer: ' + 'fi: ' + pickRandomCourse(getParsedMenuFazer('fi')) + ' en: ' + pickRandomCourse(getParsedMenuFazer('en'));
+};
+
+const switchLanguage = () => {
+  if (lang === 'fi') {
+    lang = 'en';
+    renderMenu('sodexo', SodexoData.coursesEn);
+    renderMenu('fazer', getParsedMenuFazer('en'));
+  } else {
+    lang = 'fi';
+    renderMenu('sodexo', SodexoData.coursesFi);
+    renderMenu('fazer', getParsedMenuFazer('fi'));
+  }
+};
+
+const renderSortedMenu = () => {
+  if (lang === 'fi') {
+    renderMenu('sodexo', sortCourses(SodexoData.coursesFi));
+    renderMenu('fazer', sortCourses(getParsedMenuFazer('fi')));
+  } else {
+    lang = 'en';
+    renderMenu('sodexo', sortCourses(SodexoData.coursesEn));
+    renderMenu('fazer', sortCourses(getParsedMenuFazer('en')));
+  }
+};
+
+const init = () => {
+  renderMenu('sodexo', SodexoData.coursesFi);
+  renderMenu('fazer', getParsedMenuFazer('fi'));
+  document.querySelector('#switch-lang').addEventListener('click', switchLanguage);
+  document.querySelector('#sort-menu').addEventListener('click', renderSortedMenu);
+  document.querySelector('#pick-dish').addEventListener('click', displayRandomCourse);
+};
+
+init();
