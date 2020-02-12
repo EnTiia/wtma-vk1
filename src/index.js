@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   let language = 'fi';
   let sortDirection = 'asc';
 
-  const cardContent = document.querySelector('div.card-content');
+  const menuButtons = document.querySelector('div.menu-buttons');
   const main = document.querySelector('main');
 
   const randomCourse = document.createElement('p');
@@ -54,6 +54,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   };
 
   const sortButton = document.createElement('button');
+  sortButton.classList.add('sort-button');
   sortButton.innerText = 'Järjestä';
 
   sortButton.addEventListener('click', event => {
@@ -69,9 +70,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
   });
 
   const languageButton = document.createElement('button');
+  languageButton.classList.add('language-button');
   languageButton.innerText = 'Vaihda kieltä';
 
   const randomButton = document.createElement('button');
+  randomButton.classList.add('random-button');
   randomButton.innerText = 'Arvo satunnainen ruokalaji';
 
   languageButton.addEventListener('click', event => {
@@ -97,9 +100,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     randomCourse.innerText = array[random];
   });
 
-  cardContent.appendChild(sortButton);
-  cardContent.appendChild(languageButton);
-  cardContent.appendChild(randomButton);
+  menuButtons.appendChild(sortButton);
+  menuButtons.appendChild(languageButton);
+  menuButtons.appendChild(randomButton);
   main.appendChild(randomCourse);
 
   printMenu((language === 'fi') ? coursesFi : coursesEn);
