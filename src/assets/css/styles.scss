@@ -32,8 +32,11 @@ nav {
   display: none;
 }
 
-#lunchList{
+#lunch-list{
   list-style-type: none;
+  li{
+    padding-bottom: 0.5rem;
+  }
 }
 
 .nav-item{
@@ -184,11 +187,9 @@ article{
   height: 1.5rem;
   fill: #9BADBF;
   padding-right: 0.3rem;
-}
-
-#add-icon{
   &:hover, &:active{
     fill: $active-color;
+    cursor: pointer;
   }
 }
 
@@ -293,19 +294,20 @@ padding-bottom: 0.3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 1rem 2rem;
   background-color: $primary-color;
   font-family: $text-font-family;
   font-weight: 800;
 }
 
 .modal-body{
-  padding: 2px 16px;
+  padding: 1rem 2rem;
   li{
     list-style: none;
     font-family: $text-font-family;
     font-weight: 400;
     font-size: 18px;
     line-height: $text-line-height;
+    padding-bottom: 1rem;
   }
 }

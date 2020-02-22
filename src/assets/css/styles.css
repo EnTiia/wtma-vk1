@@ -38,8 +38,12 @@ nav ul {
   display: none;
 }
 
-#lunchList {
+#lunch-list {
   list-style-type: none;
+}
+
+#lunch-list li {
+  padding-bottom: 0.5rem;
 }
 
 .nav-item {
@@ -221,6 +225,7 @@ article {
 
 #add-icon:hover, #add-icon:active {
   fill: #8d9ea2;
+  cursor: pointer;
 }
 
 #add-restaurant {
@@ -336,14 +341,14 @@ article {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 1rem;
+  padding: 1rem 2rem;
   background-color: #bdcfd3;
   font-family: "Lato", sans-serif;
   font-weight: 800;
 }
 
 .modal-body {
-  padding: 2px 16px;
+  padding: 1rem 2rem;
 }
 
 .modal-body li {
@@ -352,5 +357,6 @@ article {
   font-weight: 400;
   font-size: 18px;
   line-height: 125%;
+  padding-bottom: 1rem;
 }
 /*# sourceMappingURL=styles.css.map */
