@@ -12,16 +12,23 @@ $text-line-height: 125%;
 
 nav {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 1rem 5%;
+  .nav-content{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mobile-nav{
+    display:none
+  }
   ul {
     display: flex;
     list-style-type: none;
   }
 }
 
-#nav-button{
+#mobile-nav-button{
   display: none;
 }
 
@@ -33,7 +40,7 @@ nav {
   padding: 0 1rem 0 0;
   font-family: $text-font-family;
   font-weight: 700;
-  font-size: 17px;
+  font-size: 19px;
 }
 
 a {
@@ -106,6 +113,7 @@ header{
 
 
 #header-img{
+  background-image: url('../img/header_image.jpg');
   height: 100%;
   background-size: cover;
   background-position: 50%;
@@ -117,6 +125,11 @@ header{
   height: 8rem;
   border: 1px solid black;
   margin: 1rem 1rem 1rem 0;
+  &:hover, &:focus{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
 }
 
 .card-logo{
@@ -189,6 +202,7 @@ article{
 
 .location{
 display: flex;
+padding-bottom: 0.3rem;
 }
 
 .location-icon{
@@ -203,7 +217,15 @@ display: flex;
 .restaurant{
   font-family: $text-font-family;
   font-weight: 800;
-  font-size: 21px;
+  font-size: 22px;
+  padding-bottom: 0.2rem;
+}
+
+.article-text{
+  font-family: $text-font-family;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: $text-line-height;
 }
 
 .text{
@@ -213,10 +235,14 @@ display: flex;
   line-height: $text-line-height;
 }
 
+.mobile-text{
+  display: none;
+}
+
 .menu{
   font-family: $text-font-family;
   font-weight: 400;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .menu-buttons{
@@ -228,7 +254,7 @@ display: flex;
 .location-name{
   font-family: $text-font-family;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 #modal{
@@ -264,11 +290,22 @@ display: flex;
 }
 
 .modal-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 1rem;
-  background-color: #5cb85c;
-  color: white;
+  background-color: $primary-color;
+  font-family: $text-font-family;
+  font-weight: 800;
 }
 
 .modal-body{
   padding: 2px 16px;
+  li{
+    list-style: none;
+    font-family: $text-font-family;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: $text-line-height;
+  }
 }

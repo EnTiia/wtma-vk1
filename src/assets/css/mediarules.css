@@ -1,9 +1,128 @@
-@media (max-width: 1000px) {
-  .card {
-    width: 100%;
+.article-text {
+  display: none;
+}
+
+.mobile-text {
+  display: block;
+  font-size: 18px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 125%;
+}
+
+.card {
+  width: 100%;
+}
+
+.new-card {
+  width: 100%;
+}
+
+#logo-text {
+  font-size: 50px;
+}
+
+#slogan {
+  font-size: 18px;
+}
+
+@media screen and (max-width: 700px) {
+  nav {
+    position: fixed;
+    width: 90%;
+    height: 1rem;
+    top: 0;
+    background-color: #bdcfd3;
+    z-index: 1;
+    overflow-y: hidden;
+    -webkit-transition: 1s;
+    transition: 1s;
   }
-  .new-card {
-    width: 100%;
+  nav .mobile-nav {
+    display: block;
+    position: absolute;
+    right: 5%;
+  }
+  nav .mobile-nav:hover, nav .mobile-nav:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  nav .nav-content {
+    display: block;
+    padding-top: 2rem;
+  }
+  nav .nav-content ul {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  nav .nav-content ul li {
+    padding: 1rem 0;
+    border-bottom: 2px solid #8d9ea2;
+  }
+  nav .nav-content .search {
+    padding: 1rem 0;
+  }
+  .fas {
+    font-size: 1.3rem;
+  }
+  .card-img {
+    width: 6rem;
+    height: 6rem;
+    border: 1px solid blue;
+  }
+  header {
+    height: 10rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background-color: unset;
+    margin-top: 3rem;
+  }
+  #header-img {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    position: relative;
+    background-image: unset;
+  }
+  .img-container::after {
+    content: "";
+    background-image: url("../img/header_image.jpg");
+    opacity: 0.3;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    background-size: cover;
+    background-position: 50%;
+    z-index: -1;
+  }
+  #header-block {
+    display: none;
+  }
+  .restaurant {
+    font-size: 20px;
+  }
+  .menu {
+    font-size: 14px;
+  }
+  .location-name {
+    font-size: 16px;
   }
 }
 /*# sourceMappingURL=mediarules.css.map */
