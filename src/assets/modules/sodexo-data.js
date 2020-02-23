@@ -1,6 +1,9 @@
 import SodexoLunchMenu from '../sodexo-day-example.json';
+import fetchUrl from './fetch';
 
-console.log(SodexoLunchMenu.courses);
+//console.log(SodexoLunchMenu.courses);
+const sodexoData = fetchUrl('https://www.sodexo.fi/ruokalistat/output/daily_json/152/2020-02-17');
+sodexoData.then(data => console.log(data.courses));
 
 let coursesEn = [];
 let coursesFi = [];
