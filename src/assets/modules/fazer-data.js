@@ -1,5 +1,9 @@
 import FazerLunchMenuEn from '../fazer-week-example-en.json';
 import FazerLunchMenu from '../fazer-week-example.json';
+import fetchUrl from './fetch';
+
+const menuData = fetchUrl('https://www.fazerfoodco.fi/api/restaurant/menu/week?language=fi&restaurantPageId=270540&weekDate=2020-01-14');
+menuData.then(data => console.log(data.LunchMenus[0].SetMenus[0].Meals));
 
 /**
  * Parses a menu for a day from Fazer weekly json data

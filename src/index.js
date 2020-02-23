@@ -1,9 +1,9 @@
-
 import SodexoData from './assets/modules/sodexo-data';
 import {getParsedMenuFazer} from './assets/modules/fazer-data';
 
 let lang = 'fi';
 
+let sodexoData;
 /**
  * Sorts an array alphapetically
  *
@@ -53,35 +53,38 @@ main.appendChild(sodexoRandomCourse);
 main.appendChild(fazerRandomCourse);
 
 const displayRandomCourse = () => {
-  sodexoRandomCourse.innerText = 'Sodexo: ' + 'fi: ' + pickRandomCourse(SodexoData.coursesFi) + ' en: ' + pickRandomCourse(SodexoData.coursesEn);
+  sodexoRandomCourse.innerText = 'Sodexo: ' + 'fi: ' + pickRandomCourse(sodexoData.coursesFi) + ' en: ' + pickRandomCourse(sodexoData.coursesEn);
   fazerRandomCourse.innerText = 'Fazer: ' + 'fi: ' + pickRandomCourse(getParsedMenuFazer('fi')) + ' en: ' + pickRandomCourse(getParsedMenuFazer('en'));
 };
 
 const switchLanguage = () => {
   if (lang === 'fi') {
     lang = 'en';
-    renderMenu('sodexo', SodexoData.coursesEn);
+    renderMenu('sodexo', sodexoData.coursesEn);
     renderMenu('fazer', getParsedMenuFazer('en'));
   } else {
     lang = 'fi';
-    renderMenu('sodexo', SodexoData.coursesFi);
+    renderMenu('sodexo', sodexoData.coursesFi);
     renderMenu('fazer', getParsedMenuFazer('fi'));
   }
 };
 
 const renderSortedMenu = () => {
   if (lang === 'fi') {
-    renderMenu('sodexo', sortCourses(SodexoData.coursesFi));
+    renderMenu('sodexo', sortCourses(sodexoData.coursesFi));
     renderMenu('fazer', sortCourses(getParsedMenuFazer('fi')));
   } else {
     lang = 'en';
-    renderMenu('sodexo', sortCourses(SodexoData.coursesEn));
+    renderMenu('sodexo', sortCourses(sodexoData.coursesEn));
     renderMenu('fazer', sortCourses(getParsedMenuFazer('en')));
   }
 };
 
-const init = () => {
-  renderMenu('sodexo', SodexoData.coursesFi);
+const init = async () => {
+  sodexoData = await SodexoData.sodexoCourses();
+
+  renderMenu('sodexo', sodexoData.coursesFi);
+  console.log('typeof', sodexoData);
   renderMenu('fazer', getParsedMenuFazer('fi'));
   document.querySelector('#switch-lang').addEventListener('click', switchLanguage);
   document.querySelector('#sort-menu').addEventListener('click', renderSortedMenu);

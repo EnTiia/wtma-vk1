@@ -1,18 +1,9 @@
 const corsAnywhere = 'https://cors-anywhere.herokuapp.com/';
 
-const fetchOptions = {
-  method: 'GET',
-  mode: 'cors',
-  cache: 'no-cache',
-  headers: {
-    'origin': null
-  },
-};
-
 const fetchUrl = async (url) => {
   let request;
   try {
-    request = await fetch(corsAnywhere + url, fetchOptions);
+    request = await fetch(corsAnywhere + url);
     if (!request.ok) {
       throw new Error(`HTTP ${request.status} ${request.statusText}`);
     }
