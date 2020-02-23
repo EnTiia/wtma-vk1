@@ -4,6 +4,8 @@ import {getParsedMenuFazer} from './assets/modules/fazer-data';
 let lang = 'fi';
 
 let sodexoData;
+let sortOrder = 'desc';
+
 /**
  * Sorts an array alphapetically
  *
@@ -70,13 +72,16 @@ const switchLanguage = () => {
 };
 
 const renderSortedMenu = () => {
+  if (sortOrder === 'asc') sortOrder = 'desc';
+  else sortOrder = 'asc';
+
   if (lang === 'fi') {
-    renderMenu('sodexo', sortCourses(sodexoData.coursesFi));
-    renderMenu('fazer', sortCourses(getParsedMenuFazer('fi')));
+    renderMenu('sodexo', sortCourses(sodexoData.coursesFi, sortOrder));
+    renderMenu('fazer', sortCourses(getParsedMenuFazer('fi'), sortOrder));
   } else {
     lang = 'en';
-    renderMenu('sodexo', sortCourses(sodexoData.coursesEn));
-    renderMenu('fazer', sortCourses(getParsedMenuFazer('en')));
+    renderMenu('sodexo', sortCourses(sodexoData.coursesEn, sortOrder));
+    renderMenu('fazer', sortCourses(getParsedMenuFazer('en'), sortOrder));
   }
 };
 
@@ -84,7 +89,6 @@ const init = async () => {
   sodexoData = await SodexoData.sodexoCourses();
 
   renderMenu('sodexo', sodexoData.coursesFi);
-  console.log('typeof', sodexoData);
   renderMenu('fazer', getParsedMenuFazer('fi'));
   document.querySelector('#switch-lang').addEventListener('click', switchLanguage);
   document.querySelector('#sort-menu').addEventListener('click', renderSortedMenu);

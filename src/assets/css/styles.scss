@@ -272,3 +272,16 @@ display: flex;
     width: 100%;
   }
 }
+
+.buttons{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1rem;
+}
+
+button{
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
