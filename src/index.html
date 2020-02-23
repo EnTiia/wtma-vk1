@@ -8,6 +8,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="assets/css/styles.css">
   <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Slab&display=swap" rel="stylesheet">
+  <link id="colorTheme" rel="stylesheet" href="">
 </head>
 
 <body>
@@ -43,6 +44,7 @@
       </div>
     </article>
     <div class="buttons">
+      <button id="switch-theme">Switch theme</button>
       <button id="switch-lang">Switch lang</button>
       <button id="sort-menu">Sort menu</button>
       <button id="pick-dish">Pick a dish</button>
@@ -89,7 +91,7 @@
         <div id="add-restaurant">Lisää ravintola</div>
       </div>
     </section>
-    <div id="modal" class="menu-modal">
+    <div class="modal menu-modal">
       <div class="modal-content">
         <div class="modal-header">
           <span class="close-modal">&times;</span>
@@ -100,6 +102,22 @@
         <div class="modal-body">
           <div class="text">
             Menu
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="theme-switch" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close-modal">&times;</span>
+          <div class="menu-date">
+            Switch theme
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="text">
+            <button id="light-theme">Light-theme</button>
+            <button id="colorful-theme">Colorful theme</button>
           </div>
         </div>
       </div>

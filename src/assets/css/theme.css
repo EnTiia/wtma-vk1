@@ -1,0 +1,19 @@
+header {
+  background-color: #4ABDAC;
+}
+
+button {
+  background-color: #F7B733;
+  color: white;
+  border-style: none;
+}
+
+#slogan, #logo-text {
+  color: white;
+}
+
+.modal-header {
+  background-color: #4ABDAC;
+  color: white;
+}
+/*# sourceMappingURL=theme.css.map */

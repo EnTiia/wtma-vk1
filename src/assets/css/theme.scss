@@ -1,0 +1,24 @@
+$main-color: #4ABDAC;
+$secondary-color: #FC4A1A;
+$active-color:  #F7B733;
+$primary-color: #DFDCE3;
+
+
+header{
+  background-color: $main-color;
+}
+
+button{
+  background-color: $active-color;
+  color: white;
+  border-style: none;
+}
+
+#slogan, #logo-text{
+  color: white;
+}
+
+.modal-header{
+  background-color: $main-color;
+  color: white;
+}

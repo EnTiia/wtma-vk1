@@ -221,7 +221,7 @@ display: flex;
   font-size: 14px;
 }
 
-#modal{
+.modal{
   display: none;
   position: fixed;
   z-index: 1;
@@ -254,13 +254,13 @@ display: flex;
 }
 
 .modal-header{
-  padding: 1rem;
-  background-color: #5cb85c;
-  color: white;
+  font-family: $text-font-family;
+  padding: 1rem 2rem;
+  background-color: $primary-color;
 }
 
 .modal-body{
-  padding: 2px 16px;
+  padding: 1rem 2rem;
 }
 
 
